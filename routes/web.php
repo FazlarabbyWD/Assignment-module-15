@@ -1,18 +1,27 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AssignmentController;
+use App\Http\Controllers\ProductController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
-Route::get('/', function () {
-    return view('welcome');
+
+//// Task Two\\\\\
+
+Route::get('/home', function () {
+    return redirect('/dashboard')->withStatus(302);
 });
+
+
+//// Task Four\\\\\
+ Route::middleware(['AuthMiddleware'])->group(function () {
+
+    Route::get('/profile',[AssignmentController::class,'taskfour']);
+    Route::get('/setting',[AssignmentController::class,'taskfour']);
+
+ });
+
+ //// Task Eight\\\\\
+
+ Route::get('/welcome',[AssignmentController::class,'eight']);
+
